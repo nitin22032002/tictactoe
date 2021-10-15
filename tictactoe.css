@@ -1,0 +1,79 @@
+html{
+    background-size: 100%;
+    background-image: url('https://img.freepik.com/free-photo/yellow-plastic-crosses-toe-ruled-field-playing-tic-tac-toe-blue-background-concept-xo-win-challenge-educational-game-kids_164357-2507.jpg?size=626&ext=jpg');
+}
+.heading{
+    font-size: 50px;
+    font-weight: 800;
+    text-transform: capitalize;
+    text-align: center;
+    text-shadow: 2px 3px grey;
+}
+.main-div{
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.toe-table{
+table-layout: auto;
+margin: 20px;
+width: 30%;
+border-width: 10px;
+border-radius: 10px;
+border-color: grey;
+place-content: center;
+
+}
+.cols:hover{
+    background-color: aqua;
+    opacity: 0.5;
+}
+.cols{
+    width: 40px;
+    height: 90px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+}
+.dimension-div{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+.btn{
+    background-color: aqua;
+    color: whitesmoke;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    font-style: italic;
+    margin-left: 10px;
+    height: 40px;
+    padding: 10px;
+    cursor: pointer;
+    width: 28%;
+    box-shadow: 2px 3px grey;
+}
+.btn:hover{
+    background-color: aquamarine;
+}
+.alert{
+    height: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    text-indent: 10px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    color:whitesmoke;
+    background-color: red;
+    padding: 10px;
+    display:none;
+    padding-bottom: 25px;
+}
