@@ -1,11 +1,20 @@
 let name={'X':prompt("Enter X Name "),'O':prompt("Enter O Name ")}
 let alertTag=document.querySelector('.alert')
+let alertAudio=new Audio('alert.mp3')
+let moveAudio=new Audio('move.mp3')
+let winAudio=new Audio('win.mp3')
+let turnTag=document.getElementById('turn')
 let column=Array.from(document.getElementsByClassName('cols'))
 let btn=Array.from(document.getElementsByClassName('btn'))
 let table=document.querySelector('.toe-table')
 let chance=0
+let turn=true;
 let row=3
 let col=3
+if(window.screen.width<900){
+    table.style.width="100%"
+    alertTag.style.height="20px";
+}
 const showAlert=(msg,color)=>{
 alertTag.innerText=msg;
 alertTag.style.backgroundColor=color;
@@ -31,8 +40,9 @@ const readGrid=()=>{
             item.style.width=`40px`
         }
     })
- if(window.screen.width<900){
+    if(window.screen.width<900){
         table.style.width="100%"
+        alertTag.style.height="20px";
     }
 }
 const handleBtnClick=(e)=>{
@@ -45,18 +55,22 @@ const handleBtnClick=(e)=>{
 // use to handle 0 and x represent on block
 const handleClick=(e)=>{
     if(e.target.getAttribute('status')==="true"){
+        moveAudio.play()
         e.target.setAttribute('status',false)
-        if(chance%2==0){
+        if((chance%2==0 && turn) || (chance%2!==0 && !turn)){
         e.target.innerText="X"
+        turnTag.innerText="O"
     }
-    else{
+    else if((chance%2==0 && !turn) || (chance%2!==0 && turn)){
         e.target.innerText="O"
+        turnTag.innerText="X"
     }
     chance++;
 checkWinnner()
 }
     else{
         showAlert("Invalid Move This Block Already filled By player",'red')
+        alertAudio.play()
     }
 }
 // used to generate winning position array
@@ -127,10 +141,13 @@ const checkWinnner=()=>{
                 highLight(item)
             })
             setTimeout(()=>{
+                winAudio.play()
+                turn=!turn
             showAlert(`${name[column[isWinner[0][0]].innerText]} win the game`,'lightgreen')
             designBox(row,col)},500)}
     else if(chance===row*col){
         setTimeout(()=>{
+            turn=!turn
         showAlert("Match Is Draw",'orange')
         designBox(row,col)},50)
     }
@@ -150,4 +167,8 @@ const designBox=(row,col)=>{
     column=Array.from(document.getElementsByClassName('cols'))
     chance=0
     readGrid();
+    if(turn)
+        turnTag.innerText="X"
+    else
+        turnTag.innerText="O"
 }

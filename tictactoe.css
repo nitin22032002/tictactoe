@@ -77,3 +77,10 @@ place-content: center;
     display:none;
     padding-bottom: 25px;
 }
+.turn-div{
+    font-size: 36px;
+    font-weight: 500;
+    text-transform: capitalize;
+    text-align: center;
+    text-shadow: 2px 3px grey;
+}
